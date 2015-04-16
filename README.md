@@ -2,7 +2,7 @@
 
 This project is based on the Slack plugin implementation found here:
 
-https://raw.githubusercontent.com/jenkinsci/slack-plugin
+https://github.com/jenkinsci/slack-plugin
 
 # Jenkins instructions
 
