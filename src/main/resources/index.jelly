@@ -1,0 +1,4 @@
+<?jelly escape-by-default='true'?>
+<div>
+  This plugin creates a post-build action that sends alert notifications to VictorOps.
+</div>
