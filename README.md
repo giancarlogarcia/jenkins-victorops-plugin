@@ -7,7 +7,9 @@ When activated, the plugin alerts VictorOps with message type "INFO" on build su
 
 The project was based on the Slack plugin: https://github.com/jenkinsci/slack-plugin
 
-# Jenkins instructions
+# Instructions
+
+Install Maven (I used 3.2.3) and JDK (I used 1.8).
 
 Right now this project isn't hosted by jenkisci, so there are a few extra steps you'll need to follow.
 
@@ -18,7 +20,3 @@ Right now this project isn't hosted by jenkisci, so there are a few extra steps 
 4. Restart Jenkins
 5. Configure the global plugin settings: "Manage Jenkins" > "Configure System" > "VictorOps Alerting"
 6. Add a routing key to your Jenkins job and **don't forget to add the VictorOps post-build action**
-
-# Developer instructions
-
-Install Maven (I used 3.2.3) and JDK (I used 1.8).
