@@ -4,20 +4,8 @@ import hudson.Util;
 import hudson.model.Result;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
-import hudson.model.Cause;
-import hudson.model.CauseAction;
-import hudson.model.Hudson;
-import hudson.model.Run;
-import hudson.scm.ChangeLogSet;
-import hudson.scm.ChangeLogSet.AffectedFile;
-import hudson.scm.ChangeLogSet.Entry;
-import hudson.triggers.SCMTrigger;
-import org.apache.commons.lang.StringUtils;
+import hudson.model.TaskListener;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
 import java.util.logging.Logger;
 
 @SuppressWarnings("rawtypes")
@@ -40,7 +28,7 @@ public class ActiveNotifier implements FineGrainedNotifier {
         return notifier.newVictorOpsService(serverUrl, apiKey, routingKey);
     }
 
-    public void completed(AbstractBuild r) {
+    public void completed(AbstractBuild r, TaskListener listener) {
         AbstractProject<?, ?> project = r.getProject();
         VictorOpsNotifier.VictorOpsJobProperty jobProperty = project.getProperty(VictorOpsNotifier.VictorOpsJobProperty.class);
         if (jobProperty == null) {
@@ -54,7 +42,10 @@ public class ActiveNotifier implements FineGrainedNotifier {
         } while (previousBuild != null && previousBuild.getResult() == Result.ABORTED);
         if ((result == Result.FAILURE && jobProperty.getNotifyFailure())
             || (result == Result.SUCCESS && jobProperty.getNotifySuccess())) {
-            getVictorOps(r).publish(getBuildStatus(r), getBuildMessage(r), getBuildIncident(r));
+            String status = getBuildStatus(r);
+            String incident = getBuildIncident(r);
+            listener.getLogger().println("Posting status '" + status + "' to VictorOps incident '" + incident + "'.");
+            getVictorOps(r).publish(status, getBuildMessage(r), incident);
         }
     }
 

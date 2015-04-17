@@ -1,5 +1,6 @@
 build/
 target/
+work/
 *.class
 *.iml
 *.ipr
