@@ -9,12 +9,8 @@ The project was based on the Slack plugin: https://github.com/jenkinsci/slack-pl
 
 # Instructions
 
-Install Maven (I used 3.2.3) and JDK (I used 1.8).
-
-Right now this project isn't hosted by jenkisci, so there are a few extra steps you'll need to follow.
-
 1. Get a VictorOps account and setup an HTTP integration:
-2. Build the plugin locally
+2. Grab the latest .hpi fromt he release page, or build the plugin locally (using Maven ~3.2.3 and JDK 1.8)
 	mvn package
 3. Place the plugin .hpi file in the {jenkins-home}/plugins/ directory
 4. Restart Jenkins
