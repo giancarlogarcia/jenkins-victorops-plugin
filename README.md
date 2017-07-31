@@ -15,4 +15,13 @@ The project was based on the Slack plugin: https://github.com/jenkinsci/slack-pl
 3. Place the plugin .hpi file in the {jenkins-home}/plugins/ directory
 4. Restart Jenkins
 5. Configure the global plugin settings: "Manage Jenkins" > "Configure System" > "VictorOps Alerting"
+
+  - `Server url` should be simply "alert.victorops.com"
+  - `API key` will be known after creating a "REST" integration. The URL
+  offered by VictorOps will appear like this:
+
+  ```
+  https://alert.victorops.com/integrations/generic/20131114/alert/{API key}/$routing_key
+  ```
+
 6. Add a routing key to your Jenkins job and **don't forget to add the VictorOps post-build action**
