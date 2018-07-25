@@ -67,7 +67,6 @@ public class ActiveNotifier implements FineGrainedNotifier {
 
     static String getBuildIncident(AbstractBuild r) {
         AbstractProject<?, ?> project = r.getProject();
-        return "Jenkins " + project.getLastBuild().toString();
+        return "Jenkins: " + project.getDisplayName().toString();
     }
-
 }
