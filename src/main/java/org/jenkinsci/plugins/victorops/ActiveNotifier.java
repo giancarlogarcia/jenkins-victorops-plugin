@@ -52,11 +52,11 @@ public class ActiveNotifier implements FineGrainedNotifier {
     static String getBuildStatus(AbstractBuild r) {
         Result result = r.getResult();
         if (result == Result.SUCCESS) {
-            return "INFO";
+            return "RECOVERY";
         } else if (result == Result.FAILURE) {
             return "CRITICAL";
         } else {
-            return "WARNING";
+            return "INFO";
         }
     }
 
